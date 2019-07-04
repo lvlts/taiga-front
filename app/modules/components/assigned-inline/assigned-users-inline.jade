@@ -9,16 +9,17 @@ div(ng-if="isAssigned")
         .user-list-item.counter(ng-if="hiddenUsers")
             span +{{ hiddenUsers }}
 
-    .ticket-assigned-to.single-assign(ng-if="assignedUsers.length == 1")
-        .user-avatar
-            img(
-                tg-avatar="assignedUsers[0]"
-                title="{{assignedUsers[0].full_name_display}}"
-                alt="{{assignedUsers[0].full_name_display}}"
-            )
-        .assigned-to
-            .assigned-users-options
-                span.user-assigned {{ assignedUsers[0].full_name_display }}
+
+    .ticket-user-list(ng-if="assignedUsers.length == 1")
+        .user-list-single
+            .user-list-avatar
+                img(
+                    tg-avatar="assignedUsers[0]"
+                    title="{{assignedUsers[0].full_name_display}}"
+                    alt="{{assignedUsers[0].full_name_display}}"
+                )
+            .user-list-name
+                span {{ assignedUsers[0].full_name_display }}
             tg-svg.remove-user(
                 svg-icon="icon-close",
                 title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
